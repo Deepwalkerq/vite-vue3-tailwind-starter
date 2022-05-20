@@ -1,27 +1,44 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { BadgeCheckIcon } from '@heroicons/vue/solid'
 
-let counter = ref(0)
+const time = ref(null)
 
-setInterval(() => {
-  counter.value++
-}, 1000)
+const startTime = function(){
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  time.value =  h + ":" + m + ":" + s;
+  setTimeout(startTime, 1000);
+}
+
+const checkTime = function(i) {
+  if (i < 10) {i = "0" + i}  // add zero in front of numbers < 10
+  return i;
+}
+
+onMounted(() => {
+  startTime()
+})
 </script>
 
 <template>
-  <div>
+  <!-- <div>
     <header class="bg-white shadow" v-if="$route.meta.title">
-      <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h1
-          @click="counter = 0"
-          class="text-3xl font-bold leading-tight text-gray-900"
-        >
-          {{ $route.meta.title }} / {{ counter }}
-        </h1>
+  </div> -->
+  <div class="h-min-screen w-min-screen">
+    <header class="md:h-24 min-w-max p-0 md:p-2 shadow bg-slate-200 dark:bg-slate-800">
+      <div class="flex flex-auto items-center min-w-sm justify-center md:justify-start">
+        <h1 class="md:text-2xl dark:text-slate-200">123</h1>
+        <h2 class="text-sm dark:text-slate-200">245</h2>
+
       </div>
     </header>
     <main>
-      <router-view />
+      <router-view></router-view>
     </main>
   </div>
 </template>
