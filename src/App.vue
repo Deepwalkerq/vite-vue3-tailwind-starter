@@ -30,11 +30,11 @@ onMounted(() => {
     <header class="bg-white shadow" v-if="$route.meta.title">
   </div> -->
   <div class="h-min-screen w-min-screen">
-    <header class="md:h-24 min-w-max p-0 md:p-2 shadow bg-slate-200 dark:bg-slate-800">
-      <div class="flex flex-auto items-center min-w-sm justify-center md:justify-start">
-        <h1 class="md:text-2xl dark:text-slate-200">123</h1>
-        <h2 class="text-sm dark:text-slate-200">245</h2>
-
+    <header class="flex items-center md:h-24 min-w-max p-0 md:p-2 shadow bg-slate-200 dark:bg-slate-800">
+      <div class="flex items-baseline min-w-sm justify-center md:justify-start">
+        <BadgeCheckIcon class="w-10 md:text-2xl dark:text-slate-200 text-slate-800" />
+        <h1 class="md:text-2xl p-2 dark:text-slate-200 text-slate-800">Nekogatari</h1>
+        <h2 class="p-2 dark:text-slate-200 text-slate-800">{{ time }}</h2>
       </div>
     </header>
     <main>
